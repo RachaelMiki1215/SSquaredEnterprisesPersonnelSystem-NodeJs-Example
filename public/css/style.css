@@ -1,0 +1,161 @@
+/* TODO: Shrink input field width when screen width < 500px */
+
+body {
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+table, thead, tbody, tr, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+select {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+input[type=button] {
+    padding: 5px 15px;
+}
+
+input[type=button]:hover {
+    cursor: pointer;
+}
+
+form {
+    display: table;
+    margin: auto;
+}
+
+form div {
+    display: table-row;
+}
+
+form div * {
+    padding-bottom: 20px;
+}
+
+form div label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: top;
+}
+
+form div :not(label) {
+    display: block;
+    width: 200px;
+    padding: 2px 10px;
+}
+
+form label::after {
+    content: ":";
+    margin-right: 20px;
+}
+
+dialog {
+    z-index: 10;
+    position: fixed;
+    top: 30px;
+    margin: auto;
+    width: 250px;
+    background-color: #606060;
+    color: white;
+    border-width: 0px;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+ul {
+    text-align: left;
+}
+
+#addEmployeePopup {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#dialogOverlay {
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#saveEntryDialog div {
+    display: none;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.roundContainer {
+    width: 80vw;
+    height: 80vh;
+    background-color: white;
+    border-radius: 20px;
+    position: fixed;
+}
+
+.buttonsDiv {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    margin: 30px auto;
+}
+
+.formFieldMsgArea {
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 0;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    text-align: left;
+    display: none;
+}
+
+.error, .warning {
+    padding: 0;
+    padding-left: 25px;
+    text-indent: -25px;
+    margin-left: 5px;
+    display: none;
+}
+
+.error { color: crimson; }
+.error::before { content: "❌ ";}
+
+.warning { color: darkgoldenrod; }
+.warning::before { content: "⚠ "; }
+
+@media screen and (min-width: 600px) {
+    table {
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 599px) {
+    table {
+        width: 100%;
+    }
+}

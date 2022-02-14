@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>S-Squared Enterpises Personnel System</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Employee Management Systwm Example">
+        <meta name="author" content="Rachael Buxton">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="public/css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.21/jquery.csv.min.js" integrity="sha512-Y8iWYJDo6HiTo5xtml1g4QqHtl/PO1w+dmUpQfQSOTqKNsMhExfyPN2ncNAe9JuJUSKzwK/b6oaNPop4MXzkwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
+            integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY="
+            crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="mgrSelectorDiv">
+            <span>
+                <label for="managers">Manager: </label>
+                <select name="managers" id="mgrSelector">
+                    <option value="0" selected disabled>--Select Manager--</option>
+                </select>
+            </span>
+        </div>
+        <div id="employeeTblDiv">
+            <table id="employeeTbl">
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Last Name</th>
+                        <th>First Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="3">(Employees would be displayed when a manager is selected.)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="buttonsDiv">
+            <input id="addEmployeeButton" type="button" value="Add Employee">
+        </div>
+        <div id="addEmployeePopup">
+            <div class="overlay">
+                <div class="roundContainer">
+                    <h1>Add New Employee</h1>
+                    <form id="newEmployeeForm">
+                        <div>
+                            <label for="formManagerSelect">Manager</label>
+                            <select name="formManagerSelect" id="formManagerSelector"></select>
+                            <div class="formFieldMsgArea" id="mgrSelMsgDiv">
+                                <div class="error" id="mgrNotSelectedError">Select a manager.</div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="formIdInput">Employee ID</label>
+                            <input type="number" name="formIdInput" id="formIdInput" min="1">
+                            <div class="formFieldMsgArea" id="formIdMsgDiv">
+                                <div class="warning" id="employeeIdExistsWarning">Employee ID is already taken.</div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="formFirstNameInput">First Name</label>
+                            <input type="text" name="formFirstNameInput" id="formFirstNameInput" maxlength="30">
+                            <div class="formFieldMsgArea" id="firstNameMsgDiv">
+                                <div class="error" id="firstNameInvalidError">Name is invalid. <br> (No alphabet used.)</div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="formLastNameInput">Last Name</label>
+                            <input type="text" name="formLastNameInput" id="formLastNameInput" maxlength="30">
+                            <div class="formFieldMsgArea" id="lastNameMsgDiv">
+                                <div class="error" id="lastNameInvalidError">Name is invalid. <br> (No alphabet used.)</div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="formRolesInput">Roles</label>
+                            <select name="formRolesInput" id="formRolesInput" multiple></select>
+                            <div class="formFieldMsgArea" id="roleMsgDiv">
+                                <div class="error" id="noRoleSelError">Select role(s).</div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="buttonsDiv">
+                        <input id="saveEmployeeButton" type="button" value="Save">
+                        <input id="cancelEntryButton" type="button" value="Cancel">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="dialogOverlay" class="overlay"></div>
+        <dialog id="saveEntryDialog">
+            <div id="saveEntryDialogMsg">Would you like to add this employee?</div>
+            <div id="entryErrorDialogMsg">Please fix the following errors before proceeding:</div>
+            <div id="entryWarningDialogMsg">The following warnings exist. Would you still like to add this employee?</div>
+            <ul></ul>
+            <div class="buttonsDiv" id="saveEntryButtons">
+                <input id="saveConfButton" type="button" value="Yes">
+                <input id="saveConfCancelButton" type="button" value="No">
+            </div>
+            <div class="buttonsDiv" id="entryErrorButtons">
+                <input id="errorConfButton" type="button" value="Okay">
+            </div>
+            <div class="buttonsDiv" id="entryWarningButtons">
+                <input id="warningConfButton" type="button" value="Yes">
+                <input id="warningConfCancelButton" type="button" value="No">
+            </div>
+        </dialog>
+        <dialog id="cancelEntryDialog">
+            <div id="cancelEntryDialogMsg">Are you sure you'd like to discard your current entry?</div>
+            <div class="buttonsDiv">
+                <input id="cancelEntryDialogYes" type="button" value="Yes">
+                <input id="cancelEntryDialogNo" type="button" value="No">
+            </div>
+        </dialog>
+        <script src="public/js/script.js" type="module"></script>
+    </body>
+</html>
